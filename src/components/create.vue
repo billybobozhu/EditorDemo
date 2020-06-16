@@ -1,4 +1,25 @@
 <style lang="scss">
+  .Sidebar {
+
+    // position: relative;
+    // width: 20%;
+    // min-width: 400px;
+    // margin: 20px auto;
+    // @media (min-width: 520px) {
+    //   width: 100%;
+    // }
+     flex: 1;
+        flex-grow: 0;
+        align-self: flex-end;
+        float: left;
+        display: inline-block;
+        background-color: #fff;
+        box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);
+        .sidebar-li {
+          cursor: pointer;
+          padding: 10px 12px;
+        }
+    }
   .form-create-wrap {
     $green: #4ca2ae;
     $grey: rgba(0,0,0,.5);
@@ -9,17 +30,33 @@
     @media (min-width: 520px) {
       width: 100%;
     }
-    .Sidebar {
-    $green: #4ca2ae;
-    $grey: rgba(0,0,0,.5);
-    position: relative;
-    width: 10%;
-    min-width: 400px;
-    margin: 10px auto;
-    @media (min-width: 520px) {
-      width: 100%;
+     .fa-home {
+        font-size: 20px !important;
     }
+
+    .nav-sm .fa-home {
+        font-size: 32px !important;
     }
+    // .Sidebar {
+
+    // // position: relative;
+    // // width: 20%;
+    // // min-width: 400px;
+    // // margin: 20px auto;
+    // // @media (min-width: 520px) {
+    // //   width: 100%;
+    // // }
+    //  flex: 1;
+    //     flex-grow: 0;
+    //     align-self: flex-end;
+    //     display: inline-block;
+    //     background-color: #fff;
+    //     box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);
+    //     .sidebar-li {
+    //       cursor: pointer;
+    //       padding: 10px 12px;
+    //     }
+    // }
     .wrap {
       width: 780px;
       min-height: 100px;
@@ -28,6 +65,7 @@
         width: 100%;
       }
       display: flex;
+
       .content-wrap {
         flex: 1;
         background-color: #fff;
@@ -344,15 +382,19 @@
   }
 </style>
 <template>
- 
+
   <div class="form-create-wrap">
     <loading :loading="loading"></loading>
     <div class="Sidebar" v-if="data.question.length">
 
-        <div class="sidebar-li" @click="addListFn">
+        <div class="sidebar-li" @click="addNodeFn">
           <i class="el-icon-plus"></i>
+          <!-- <canvas id="mycanvas" width="10" height="10"></canvas> -->
         </div>
+
+        <canvas id="mycanvas" width="300" height="1000"></canvas>
     </div>
+
     <div class="wrap" v-if="!loading">
       <div class="content-wrap">
         <div class="item title" @click="focusTitle($event)" :class="{'title-focus': focusIndex === 'title'}">
@@ -642,6 +684,36 @@
         that.focusIndex = that.data.question.length - 1
       },
       addListFn () {
+        let codeList = that.editableTabs.map((i) => {
+          return that.langCode[that.langList.indexOf(i)]
+        })
+        let contentList = codeList.map((i) => {
+          return {
+            language: i,
+            title: '',
+            answer: [{
+              answer_id: 1,
+              description: 'Condition1'
+            }],
+            line_answer: {
+              line_value: 1,
+              line_end_value: 5,
+              line_tag: '',
+              line_end_tag: ''
+            },
+            text_answer: ''
+          }
+        })
+        let list = {
+          question_id: that.data.question.length + 1,
+          types: 'Situation',
+          is_required: false,
+          content: contentList
+        }
+        that.data.question.push(list)
+        that.focusIndex = that.data.question.length - 1
+      },
+      addNodeFn () {
         let codeList = that.editableTabs.map((i) => {
           return that.langCode[that.langList.indexOf(i)]
         })
