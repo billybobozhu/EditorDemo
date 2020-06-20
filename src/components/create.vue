@@ -622,7 +622,6 @@
                 answer: [{
                   answer_id: 1,
                   description: 'Condition 1'
-                }],
                 }]
               }
             ]}
