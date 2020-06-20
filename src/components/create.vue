@@ -385,7 +385,7 @@
 
   <div class="form-create-wrap">
     <loading :loading="loading"></loading>
-    <div class="Sidebar" v-if="data.question.length">
+    <div class="Sidebar" v-if="data.component.length">
 
         <div class="sidebar-li" @click="addNodeFn">
           <i class="el-icon-plus"></i>
@@ -410,7 +410,7 @@
             </el-tab-pane>
           </el-tabs>
           <div class="li" v-for="i in data.name" v-if="i.language === langCode[langList.indexOf(tabLang)]">
-            <textarea class="title-area" id=titlearea placeholder="Title" v-model="i.questionnaire_name" @focus="$autoText($event)" @input="$autoText($event)"></textarea>
+            <textarea class="title-area" id=titlearea placeholder="Title" v-model="i.componentnaire_name" @focus="$autoText($event)" @input="$autoText($event)"></textarea>
           </div>
           <div class="li" v-for="i in data.name" v-if="i.language === langCode[langList.indexOf(tabLang)]">
             <textarea class="title-area" id=intro placeholder="Introduction" v-model="i.desc" @focus="$autoText($event)" @input="$autoText($event)"></textarea>
@@ -420,12 +420,12 @@
             <el-switch :width="40" on-color="#4ca2ae" v-model="data.repeat_submit" on-text="" off-text="">
             </el-switch> -->
           </div>
-          <div class="add-list" @click="addListFn" v-if="!data.question.length">
+          <div class="add-list" @click="addListFn" v-if="!data.component.length">
             <i class="el-icon-plus"></i>
           </div>
         </div>
         <div class="q-wrap">
-          <draggable v-for="data, index in data.question" :key="index" v-model="data.question" :options="{group:'people'}" :move="onMove" @start="drag=true" @end="onEnd">
+          <draggable v-for="data, index in data.component" :key="index" v-model="data.component" :options="{group:'people'}" :move="onMove" @start="drag=true" @end="onEnd">
             <div class="q-li" :class="{'q-li-focus': focusIndex === index}" id="items" @click="focusItem($event, index)">
               <div class="drap-area">
                 <i class="iconfont icon-tuozhuai"></i>
@@ -447,21 +447,21 @@
                   </el-select>
                 </div>
                 <div class="q-item" v-if="data.types === '下拉列表' || data.types === 'Situation' || data.types === '多选题' || data.types === '优先级'">
-                  <div class="q-radio" v-for="item, i in content.answer">
+                  <div class="q-radio" v-for="item, i in content.condition">
                     <div class="icon-radio" v-if="data.types === '下拉列表' || data.types === '优先级'">{{i + 1}}.</div>
                     <div v-else class="icon-radio" :class="{'icon-cirle': data.types === 'Situation', 'icon-square': data.types === '多选题'}"></div>
                     <input class="radio-input" id='testing2' v-model="item.description">
                     <i class="el-icon-close" v-if="focusIndex === index" @click="deleteRadioFn(index, index1, i)"></i>
                   </div>
                   <div class="q-radio" v-if="focusIndex === index">
-                    <div class="icon-radio" v-if="data.types === '下拉列表' || data.types === '优先级'">{{content.answer.length + 1}}.</div>
+                    <div class="icon-radio" v-if="data.types === '下拉列表' || data.types === '优先级'">{{content.condition.length + 1}}.</div>
                     <div v-else class="icon-radio" :class="{'icon-cirle': data.types === 'Situation', 'icon-square': data.types === '多选题'}"></div>
                     <input class="radio-add" v-model="addRadio" @focus="addRadioFn(index, index1)">
                   </div>
                 </div>
                 <div class="q-item line-wrap" v-if="data.types === '线性量表'">
                   <div class="q-item-line">
-                    <el-select v-model="content.line_answer.line_value">
+                    <el-select v-model="content.line_condition.line_value">
                       <el-option
                         v-for="i in lineOptions"
                         :key="i"
@@ -469,7 +469,7 @@
                       </el-option>
                     </el-select>
                     <span class="line-tip">到</span>
-                    <el-select v-model="content.line_answer.line_end_value">
+                    <el-select v-model="content.line_condition.line_end_value">
                       <el-option
                         v-for="i in lineEndOptions"
                         :key="i"
@@ -479,11 +479,11 @@
                   </div>
                   <div class="q-radio">
                     <div class="icon-radio">1.</div>
-                    <input class="radio-input" v-model="content.line_answer.line_tag" placeholder="标签（选填）">
+                    <input class="radio-input" v-model="content.line_condition.line_tag" placeholder="标签（选填）">
                   </div>
                   <div class="q-radio">
                     <div class="icon-radio">2.</div>
-                    <input class="radio-input" v-model="content.line_answer.line_end_tag" placeholder="标签（选填）">
+                    <input class="radio-input" v-model="content.line_condition.line_end_tag" placeholder="标签（选填）">
                   </div>
                 </div>
                 <div class="q-item text-wrap" v-if="data.types === '文本题'"></div>
@@ -491,7 +491,7 @@
                   <div class="square-li">
                     <h4>行</h4>
                     <div class="q-item-line">
-                      <el-select v-model="content.line_answer.line_value">
+                      <el-select v-model="content.line_condition.line_value">
                         <el-option
                           v-for="i in lineOptions"
                           :key="i"
@@ -499,7 +499,7 @@
                         </el-option>
                       </el-select>
                       <span class="line-tip">到</span>
-                      <el-select v-model="content.line_answer.line_end_value">
+                      <el-select v-model="content.line_condition.line_end_value">
                         <el-option
                           v-for="i in lineEndOptions"
                           :key="i"
@@ -509,22 +509,22 @@
                     </div>
                     <div class="q-radio">
                       <div class="icon-radio">1.</div>
-                      <input class="radio-input" v-model="content.line_answer.line_tag" placeholder="标签（选填）">
+                      <input class="radio-input" v-model="content.line_condition.line_tag" placeholder="标签（选填）">
                     </div>
                     <div class="q-radio">
                       <div class="icon-radio">2.</div>
-                      <input class="radio-input" v-model="content.line_answer.line_end_tag" placeholder="标签（选填）">
+                      <input class="radio-input" v-model="content.line_condition.line_end_tag" placeholder="标签（选填）">
                     </div>
                   </div>
                   <div class="square-li">
                     <h4>列</h4>
-                    <div class="q-radio" v-for="item, i in content.answer">
+                    <div class="q-radio" v-for="item, i in content.condition">
                       <div class="icon-radio">{{i + 1}}.</div>
                       <input class="radio-input" v-model="item.description">
                       <i class="el-icon-close" v-if="focusIndex === index" @click="deleteRadioFn(index, index1, i)"></i>
                     </div>
                     <div class="q-radio" v-if="focusIndex === index">
-                      <div class="icon-radio">{{content.answer.length + 1}}.</div>
+                      <div class="icon-radio">{{content.condition.length + 1}}.</div>
                       <input class="radio-add" v-model="addRadio" @focus="addRadioFn(index, index1)">
                     </div>
                   </div>
@@ -549,13 +549,13 @@
           </draggable>
         </div>
       </div>
-      <div class="form-sidebar" v-if="data.question.length">
+      <div class="form-sidebar" v-if="data.component.length">
         <div class="sidebar-li" @click="addListFn">
           <i class="el-icon-plus"></i>
         </div>
       </div>
     </div>
-    <div class="form-save" @click="saveFn" v-if="!loading">Save</div>
+    <div class="form-save" @click="saveFn" v-if="!loading" >Submit</div>
     <el-dialog class="add-lang" title="Add new" :visible.sync="addLangVisible" :close-on-click-modal="false" top="34%">
       <div class="li-item">
         <span class="label">Choose</span>
@@ -606,21 +606,21 @@
         data: {
           display_name: '',
           name: [{
-            questionnaire_name: '',
+            componentnaire_name: '',
             desc: '',
             language: 'cn'
           }],
           repeat_submit: false,
-          question: [{
-            question_id: 1,
+          component: [{
+            component_id: 1,
             types: 'Situation',
             is_required: false,
             content: [
               {
                 language: 'cn',
                 title: '',
-                answer: [{
-                  answer_id: 1,
+                condition: [{
+                  condition_id: 1,
                   description: 'Condition 1'
                 }]
               }
@@ -630,13 +630,13 @@
         // data2: {
         //   display_name: '',
         //   name: [{
-        //     questionnaire_name: '',
+        //     componentnaire_name: '',
         //     desc: '',
         //     language: 'cn'
         //   }],
         //   repeat_submit: false,
-        //   question: [{
-        //     question_id: 1,
+        //   component: [{
+        //     component_id: 1,
         //     types: 'Story',
         //     is_required: false,
         //     content: [
@@ -663,8 +663,8 @@
       onMove ({relatedContext, draggedContext}) {
         let relatedIndex = relatedContext.index
         let index = draggedContext.index
-        relatedContext.element.question_id = index + 1
-        draggedContext.element.question_id = relatedIndex + 1
+        relatedContext.element.component_id = index + 1
+        draggedContext.element.component_id = relatedIndex + 1
       },
       focusTitle (event) {
         let classList = event.target.classList
@@ -677,16 +677,16 @@
         that.focusIndex = i
       },
       addRadioFn (i, j) {
-        let list = that.data.question[i].content[j].answer
+        let list = that.data.component[i].content[j].condition
         that.addFormFn(list)
       },
       deleteRadioFn (i, j, k) {
-        that.data.question[i].content[j].answer.splice(k, 1)
+        that.data.component[i].content[j].condition.splice(k, 1)
       },
       addFormFn (list) {
         let index = list.length ? parseInt(list[list.length - 1].description.substr(2)) + 1 : '1'
         let text = index ? 'Condition' + index : 'Condition1'
-        list.push({answer_id: list.length + 1, description: text})
+        list.push({condition_id: list.length + 1, description: text})
         that.$nextTick(() => {
           let input = document.querySelectorAll('.radio-input')
           input[input.length - 1].focus()
@@ -697,7 +697,7 @@
         window.alert('Saving...')
         let titleName = that.data.name
         window.alert(titleName)
-        let content = JSON.stringify(that.data.question[index])
+        let content = JSON.stringify(that.data.component[index])
         var blob = new Blob([content], {type: 'text/plain;charset=utf-8'})
         FileSaver.saveAs(blob, 'save.json')
       },
@@ -709,28 +709,21 @@
           return {
             language: i,
             title: '',
-            answer: [{
-              answer_id: 1,
+            condition: [{
+              condition_id: 1,
               description: 'Condition1'
-            }],
-            line_answer: {
-              line_value: 1,
-              line_end_value: 5,
-              line_tag: '',
-              line_end_tag: ''
-            },
-            text_answer: ''
+            }]
           }
         })
         let list = {
-          question_id: that.data.question.length + 1,
+          component_id: that.data.component.length + 1,
           types: 'Situation',
           is_required: false,
           content: contentList
         }
-        that.data.question.push(list)
-        that.focusIndex = that.data.question.length - 1
-        // this.saveFn(list.question_id)
+        that.data.component.push(list)
+        that.focusIndex = that.data.component.length - 1
+        // this.saveFn(list.component_id)
       },
       addNodeFn () {
         let codeList = that.editableTabs.map((i) => {
@@ -740,31 +733,31 @@
           return {
             language: i,
             title: '',
-            answer: [{
-              answer_id: 1,
+            condition: [{
+              condition_id: 1,
               description: 'Condition1'
             }],
-            line_answer: {
+            line_condition: {
               line_value: 1,
               line_end_value: 5,
               line_tag: '',
               line_end_tag: ''
             },
-            text_answer: ''
+            text_condition: ''
           }
         })
         let list = {
-          question_id: that.data.question.length + 1,
+          component_id: that.data.component.length + 1,
           types: 'Situation',
           is_required: false,
           content: contentList
         }
-        that.data.question.push(list)
-        that.focusIndex = that.data.question.length - 1
+        that.data.component.push(list)
+        that.focusIndex = that.data.component.length - 1
       },
       deleteListFn (i) {
-        that.data.question.splice(i, 1)
-        that.focusIndex = i === 0 && that.data.question.length > 0 ? i : i - 1
+        that.data.component.splice(i, 1)
+        that.focusIndex = i === 0 && that.data.component.length > 0 ? i : i - 1
       },
       saveFn () {
         // let k = ''
@@ -775,6 +768,9 @@
         //   }
         // }
         // // window.alert(k)
+        var all = JSON.stringify(that.data.component)
+        var blob1 = new Blob([all], {type: 'text/plain;charset=utf-8'})
+        FileSaver.saveAs(blob1, 'pageall.json')
         let n = document.getElementById('tagmanager').value
         let o = document.getElementById('titlearea').value
         let m = document.getElementById('intro').value
@@ -786,6 +782,7 @@
           intro: m,
           title: o
         }
+
         var content = JSON.stringify(data)
         var blob = new Blob([content], {type: 'text/plain;charset=utf-8'})
         FileSaver.saveAs(blob, 'pageinfo.json')
@@ -807,27 +804,27 @@
       },
       addLangDataFn (value) {
         let code = that.langCode[that.langList.indexOf(value)]
-        that.data.question.map((i) => {
+        that.data.component.map((i) => {
           let li = {
             language: code,
             title: '',
-            answer: [{
-              answer_id: 1,
+            condition: [{
+              condition_id: 1,
               description: 'Condition1'
             }],
-            line_answer: {
+            line_condition: {
               line_value: 1,
               line_end_value: 5,
               line_tag: '',
               line_end_tag: ''
             },
-            text_answer: ''
+            text_condition: ''
           }
           i.content.push(li)
           return i
         })
         that.data.name.push({
-          questionnaire_name: '',
+          componentnaire_name: '',
           desc: '',
           language: code
         })
