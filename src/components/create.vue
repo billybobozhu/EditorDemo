@@ -434,7 +434,7 @@
                 <div class="q-item q-title-wrap">
                   <div class="q-title">
                     <div class="li">
-                      <input class="q-area" id="testing" placeholder="Content" v-model="content.title" @focus="$autoText($event)" @input="$autoText($event)"></input>
+                      <textarea class="q-area" id="testing" placeholder="Content" v-model="content.title" @focus="$autoText($event)" @input="$autoText($event)"></textarea>
                     </div>
                   </div>
                   <el-select class="q-select" v-if="focusIndex === index" v-model="data.types" filterable placeholder="请选择">
@@ -532,7 +532,7 @@
                 <div class="q-item option-wrap" v-if="focusIndex === index">
                   <ul class="option-list">
                     <li>
-                      <i class="iconfont icon-copy" @click="copyListFn(index)"></i>
+                      <i class="iconfont icon-baocun" @click="saveCurrentCell(index)"></i>
                     </li>
                     <li>
                       <i class="el-icon-delete" @click="deleteListFn(index)"></i>
@@ -634,6 +634,27 @@
             ]}
           ]
         },
+        // data2: {
+        //   display_name: '',
+        //   name: [{
+        //     questionnaire_name: '',
+        //     desc: '',
+        //     language: 'cn'
+        //   }],
+        //   repeat_submit: false,
+        //   question: [{
+        //     question_id: 1,
+        //     types: 'Story',
+        //     is_required: false,
+        //     content: [
+        //       {
+        //         language: 'cn',
+        //         title: ''
+        //       }
+        //     ]}
+        //   ]
+
+        // },
         editable: true,
         focusIndex: 0
       }
@@ -678,13 +699,14 @@
           input[input.length - 1].focus()
         })
       },
-      copyListFn (index) {
-        let data = JSON.parse(JSON.stringify(that.data.question[index]))
-        that.data.question.splice(index, 0, data)
-        that.focusIndex = that.data.question.length - 1
+      saveCurrentCell (index) {
+        var FileSaver = require('file-saver')
+        window.alert('Saving...', index)
+        let content = JSON.stringify(that.data.question[index])
+        var blob = new Blob([content], {type: 'text/plain;charset=utf-8'})
+        FileSaver.saveAs(blob, 'save.json')
       },
-      addListFn () {
-        this.saveFn()
+      addListFn (index) {
         let codeList = that.editableTabs.map((i) => {
           return that.langCode[that.langList.indexOf(i)]
         })
@@ -713,6 +735,7 @@
         }
         that.data.question.push(list)
         that.focusIndex = that.data.question.length - 1
+        // this.saveFn(list.question_id)
       },
       addNodeFn () {
         let codeList = that.editableTabs.map((i) => {
@@ -748,36 +771,37 @@
         that.data.question.splice(i, 1)
         that.focusIndex = i === 0 && that.data.question.length > 0 ? i : i - 1
       },
-      saveFn () {
-        let k = ''
-        let e = document.getElementsByTagName('input')
-        for (var i = 0; i < e.length; i++) {
-          if (e[i].getAttribute('id') === 'testing') {
-            k += e[i].value
-          }
-        }
-        window.alert(k)
-        let n = document.getElementById('tagmanager').value
-        let o = document.getElementById('titlearea').value
-        let m = document.getElementById('intro').value
-        var FileSaver = require('file-saver')
-        let data = {
-          tag: n,
-          intro: m,
-          title: o,
-          contenthere: k
-        }
-        var content = JSON.stringify(data)
-        var blob = new Blob([content], {type: 'text/plain;charset=utf-8'})
-        FileSaver.saveAs(blob, 'hello world.json')
-        window.alert(e)
+      saveFn (id) {
+        // let k = ''
+        // let e = document.getElementsByTagName('input')
+        // for (var i = 0; i < e.length; i++) {
+        //   if (e[i].getAttribute('id') === 'testing') {
+        //     k += e[i].value
+        //   }
+        // }
+        // // window.alert(k)
+        // let n = document.getElementById('tagmanager').value
+        // let o = document.getElementById('titlearea').value
+        // let m = document.getElementById('intro').value
+        // var FileSaver = require('file-saver')
+        // let data = {
+        //   tag: n,
+        //   nodeId: id,
+        //   intro: m,
+        //   title: o,
+        //   contenthere: k
+        // }
+        // var content = JSON.stringify(data)
+        // var blob = new Blob([content], {type: 'text/plain;charset=utf-8'})
+        // FileSaver.saveAs(blob, 'hello world.json')
+        // window.alert(e)
       },
       addLangFn () {
         let value = that.defaultLang
         if (that.editableTabs.indexOf(value) > -1) {
           this.$message({
             type: 'warning',
-            message: '语言：' + value + '已经添加过了，请检查一下哦！'
+            message: 'Passage：' + value + 'is already added！'
           })
         } else {
           that.editableTabs.push(value)
@@ -818,16 +842,16 @@
           that.addLangVisible = true
         }
         if (action === 'remove') {
-          that.$confirm('确定删除语言: ' + targetName + '的问卷吗？', {
+          that.$confirm('Delete: ' + targetName + '？', {
             title: ' ',
-            confirmButtonText: '确定',
-            cancelButtonText: '取消',
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'Cancel',
             type: 'warning',
             closeOnClickModal: false,
             beforeClose: (action, instance, done) => {
               let closeFn = () => {
                 instance.confirmButtonLoading = false
-                instance.confirmButtonText = '确定'
+                instance.confirmButtonText = 'Yes'
               }
               if (action === 'confirm') {
                 let tabs = that.editableTabs
