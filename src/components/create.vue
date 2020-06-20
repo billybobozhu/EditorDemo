@@ -399,7 +399,7 @@
       <div class="content-wrap">
         <div class="item title" @click="focusTitle($event)" :class="{'title-focus': focusIndex === 'title'}">
           <div class="li">
-            <textarea class="form-title" placeholder="Casptone Project" v-model="data.display_name" @focus="$autoText($event)" @input="$autoText($event)"></textarea>
+            <textarea class="form-title" id=tagmanager placeholder="Casptone Project" v-model="data.display_name" @focus="$autoText($event)" @input="$autoText($event)"></textarea>
           </div>
           <el-tabs v-model="tabLang" type="card" editable @edit="handleTabsEdit">
             <el-tab-pane
@@ -410,10 +410,10 @@
             </el-tab-pane>
           </el-tabs>
           <div class="li" v-for="i in data.name" v-if="i.language === langCode[langList.indexOf(tabLang)]">
-            <textarea class="title-area" placeholder="Title" v-model="i.questionnaire_name" @focus="$autoText($event)" @input="$autoText($event)"></textarea>
+            <textarea class="title-area" id=titlearea placeholder="Title" v-model="i.questionnaire_name" @focus="$autoText($event)" @input="$autoText($event)"></textarea>
           </div>
           <div class="li" v-for="i in data.name" v-if="i.language === langCode[langList.indexOf(tabLang)]">
-            <textarea placeholder="Introduction" v-model="i.desc" @focus="$autoText($event)" @input="$autoText($event)"></textarea>
+            <textarea class="title-area" id=intro placeholder="Introduction" v-model="i.desc" @focus="$autoText($event)" @input="$autoText($event)"></textarea>
           </div>
           <div class="li-right">
             <!-- <span>允许重复提交</span>
@@ -434,7 +434,7 @@
                 <div class="q-item q-title-wrap">
                   <div class="q-title">
                     <div class="li">
-                      <textarea class="q-area" placeholder="Content" v-model="content.title" @focus="$autoText($event)" @input="$autoText($event)"></textarea>
+                      <input class="q-area" id="testing" placeholder="Content" v-model="content.title" @focus="$autoText($event)" @input="$autoText($event)"></input>
                     </div>
                   </div>
                   <el-select class="q-select" v-if="focusIndex === index" v-model="data.types" filterable placeholder="请选择">
@@ -450,7 +450,7 @@
                   <div class="q-radio" v-for="item, i in content.answer">
                     <div class="icon-radio" v-if="data.types === '下拉列表' || data.types === '优先级'">{{i + 1}}.</div>
                     <div v-else class="icon-radio" :class="{'icon-cirle': data.types === 'Situation', 'icon-square': data.types === '多选题'}"></div>
-                    <input class="radio-input" v-model="item.description">
+                    <input class="radio-input" id='testing2' v-model="item.description">
                     <i class="el-icon-close" v-if="focusIndex === index" @click="deleteRadioFn(index, index1, i)"></i>
                   </div>
                   <div class="q-radio" v-if="focusIndex === index">
@@ -684,6 +684,7 @@
         that.focusIndex = that.data.question.length - 1
       },
       addListFn () {
+        this.saveFn()
         let codeList = that.editableTabs.map((i) => {
           return that.langCode[that.langList.indexOf(i)]
         })
@@ -748,7 +749,28 @@
         that.focusIndex = i === 0 && that.data.question.length > 0 ? i : i - 1
       },
       saveFn () {
-        window.alert('not done yet')
+        let k = ''
+        let e = document.getElementsByTagName('input')
+        for (var i = 0; i < e.length; i++) {
+          if (e[i].getAttribute('id') === 'testing') {
+            k += e[i].value
+          }
+        }
+        window.alert(k)
+        let n = document.getElementById('tagmanager').value
+        let o = document.getElementById('titlearea').value
+        let m = document.getElementById('intro').value
+        var FileSaver = require('file-saver')
+        let data = {
+          tag: n,
+          intro: m,
+          title: o,
+          contenthere: k
+        }
+        var content = JSON.stringify(data)
+        var blob = new Blob([content], {type: 'text/plain;charset=utf-8'})
+        FileSaver.saveAs(blob, 'hello world.json')
+        window.alert(e)
       },
       addLangFn () {
         let value = that.defaultLang
