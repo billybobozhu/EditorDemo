@@ -532,7 +532,7 @@
                 <div class="q-item option-wrap" v-if="focusIndex === index">
                   <ul class="option-list">
                     <li>
-                      <i class="iconfont icon-baocun" @click="saveCurrentCell(index)"></i>
+                      <i class="iconfont icon-baocun-tianchong" @click="saveCurrentCell(index)"></i>
                     </li>
                     <li>
                       <i class="el-icon-delete" @click="deleteListFn(index)"></i>
@@ -623,13 +623,7 @@
                   answer_id: 1,
                   description: 'Condition 1'
                 }],
-                line_answer: {
-                  line_value: 1,
-                  line_end_value: 5,
-                  line_tag: '',
-                  line_end_tag: ''
-                },
-                text_answer: ''
+                }]
               }
             ]}
           ]
@@ -701,7 +695,9 @@
       },
       saveCurrentCell (index) {
         var FileSaver = require('file-saver')
-        window.alert('Saving...', index)
+        window.alert('Saving...')
+        let titleName = that.data.name
+        window.alert(titleName)
         let content = JSON.stringify(that.data.question[index])
         var blob = new Blob([content], {type: 'text/plain;charset=utf-8'})
         FileSaver.saveAs(blob, 'save.json')
@@ -771,7 +767,7 @@
         that.data.question.splice(i, 1)
         that.focusIndex = i === 0 && that.data.question.length > 0 ? i : i - 1
       },
-      saveFn (id) {
+      saveFn () {
         // let k = ''
         // let e = document.getElementsByTagName('input')
         // for (var i = 0; i < e.length; i++) {
@@ -780,20 +776,20 @@
         //   }
         // }
         // // window.alert(k)
-        // let n = document.getElementById('tagmanager').value
-        // let o = document.getElementById('titlearea').value
-        // let m = document.getElementById('intro').value
-        // var FileSaver = require('file-saver')
-        // let data = {
-        //   tag: n,
-        //   nodeId: id,
-        //   intro: m,
-        //   title: o,
-        //   contenthere: k
-        // }
-        // var content = JSON.stringify(data)
-        // var blob = new Blob([content], {type: 'text/plain;charset=utf-8'})
-        // FileSaver.saveAs(blob, 'hello world.json')
+        let n = document.getElementById('tagmanager').value
+        let o = document.getElementById('titlearea').value
+        let m = document.getElementById('intro').value
+        var FileSaver = require('file-saver')
+        let type = 'startnode'
+        let data = {
+          tag: n,
+          nodetype: type,
+          intro: m,
+          title: o
+        }
+        var content = JSON.stringify(data)
+        var blob = new Blob([content], {type: 'text/plain;charset=utf-8'})
+        FileSaver.saveAs(blob, 'pageinfo.json')
         // window.alert(e)
       },
       addLangFn () {
