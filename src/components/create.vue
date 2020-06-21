@@ -1,4 +1,97 @@
 <style lang="scss">
+  .container {
+        width: 500px;
+        height: 300px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        position: relative;
+    }
+    .card-item {
+        width: 700px;
+        height: 200px;
+        line-height: 198px;
+        text-align: center;
+        font-size: 18px;
+        border-radius: 5px;
+        position: absolute;
+    }
+    .card-item.t30 {
+        top: 30px;
+        animation: positionAnimate1 1.1s
+    }
+    .card-item.t60 {
+        top: 60px;
+        animation: positionAnimate1 0.9s
+    }
+    .card-item.t90 {
+        top: 90px;
+        animation: positionAnimate1 0.7s
+    }
+    .card-item.t120 {
+        top: 120px;
+        box-shadow: 0 0 2px 2px #fff;
+        animation: positionAnimate 0.5s
+    }
+    .card-item.t150 {
+        top: 150px;
+        box-shadow: 0 0 2px 2px #fff;
+        animation: positionAnimate 0.3s
+    }
+    @keyframes positionAnimate1 {
+        0% {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    @keyframes positionAnimate {
+        0% {
+            opacity: 0;
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    .card-item.z1 {
+        z-index:  1;
+    }
+    .card-item.z2 {
+        z-index:  2;
+    }
+    .card-item.z3 {
+        z-index:  3;
+    }
+    .card-item.z4 {
+        z-index:  4;
+    }
+    .card-item.z5 {
+        z-index:  5;
+    }
+    .card-item.red {
+        border: 1px solid grey;
+        background-color: grey;
+    }
+    .card-item.blue {
+        border: 1px solid blue;
+        background-color: blue;
+    }
+    .card-item.yellow {
+        border: 1px solid brown;
+        background-color: brown;
+    }
+    .card-item.green {
+        border: 1px solid green;
+        background-color: green;
+    }
+    .card-item.black {
+        border: 1px solid pink;
+        background-color: pink;
+    }
   .Sidebar {
 
     // position: relative;
@@ -385,13 +478,28 @@
 
   <div class="form-create-wrap">
     <loading :loading="loading"></loading>
+    <!-- <div class="container">
+        <div class="card-item" v-for="(item,index) in cardArrs"
+             :class="[item.bgColor ,'z'+item.zIndex, 't'+item.zIndex*30]"
+             @click.stop="changeArrIndex(index)">
+            {{item.text}}
+        </div>
+    </div> -->
     <div class="Sidebar" v-if="data.component.length">
-
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" v-for="(item,index) in images" :key="index">
+            <img class="swiper-img" :src="item" />
+          </div>
+        </div>
+      </div>  
         <div class="sidebar-li" @click="addNodeFn">
           <i class="el-icon-plus"></i>
+          
           <!-- <canvas id="mycanvas" width="10" height="10"></canvas> -->
         </div>
-
+        <div id="mountNode">
+        </div>  
         <canvas id="mycanvas" width="300" height="1000"></canvas>
     </div>
 
@@ -409,6 +517,7 @@
               :name="item">
             </el-tab-pane>
           </el-tabs>
+          
           <div class="li" v-for="i in data.name" v-if="i.language === langCode[langList.indexOf(tabLang)]">
             <textarea class="title-area" id=titlearea placeholder="Title" v-model="i.componentnaire_name" @focus="$autoText($event)" @input="$autoText($event)"></textarea>
           </div>
@@ -426,10 +535,18 @@
         </div>
         <div class="q-wrap">
           <draggable v-for="data, index in data.component" :key="index" v-model="data.component" :options="{group:'people'}" :move="onMove" @start="drag=true" @end="onEnd">
+            <div class="container">
+           <div class="card-item" v-for="(item,index) in cardArrs"
+             :class="[item.bgColor ,'z'+item.zIndex, 't'+item.zIndex*30]"
+             @click.stop="changeArrIndex(index)">
+            {{item.text}}
+            </div>
+          </div>
             <div class="q-li" :class="{'q-li-focus': focusIndex === index}" id="items" @click="focusItem($event, index)">
               <div class="drap-area">
                 <i class="iconfont icon-tuozhuai"></i>
               </div>
+              
               <div class="q-item-wrap" v-for="content, index1 in data.content" v-if="content.language === langCode[langList.indexOf(tabLang)]">
                 <div class="q-item q-title-wrap">
                   <div class="q-title">
@@ -579,6 +696,7 @@
 <script>
   import draggable from 'vuedraggable'
   import loading from '@/components/loading.vue'
+  // import {init,update} from '@/components/g6Utils.min.js'
 
   let lineEndOptions = Array.apply(null, Array(9)).map((item, i) => {
     return i + 2
@@ -589,6 +707,34 @@
     data () {
       that = this
       return {
+         cardArrs: [
+                    {
+                        text: "card-1",
+                        zIndex: 1,
+                        bgColor: "red"
+                    },
+                    {
+                        text: "card-2",
+                        zIndex: 2,
+                        bgColor: "blue"
+                    },
+                    {
+                        text: "card-3",
+                        zIndex: 3,
+                        bgColor: "yellow"
+                    },
+                    {
+                        text: "card-4",
+                        zIndex: 4,
+                        bgColor: "green"
+                    },
+                    {
+                        text: "card-5",
+                        zIndex: 5,
+                        bgColor: "black"
+                    }
+                ],
+                maxLength: 5,
         auth: false,
         loading: false,
         selectOptions: ['Situation', 'Story'],
@@ -657,6 +803,35 @@
       loading
     },
     methods: {
+       changeArrIndex(index){
+//                if(index == this.maxLength - 1) {
+//                    return;
+//                }
+                let _zIndex = "";
+                let _newArr = [];
+                this.cardArrs.forEach((item,idx)=> {
+                    let _obj = {};
+                    if(idx == index) {
+                        _zIndex = item.zIndex;
+                        _obj.zIndex = this.maxLength;
+                        _obj.bgColor = item.bgColor;
+                        _obj.text = item.text;
+                        _obj.flag = true;
+                        _newArr.push(_obj)
+                    }else {
+                        _newArr.push(item)
+                    }
+                });
+                _newArr.forEach((obj)=>{
+                   if(obj.zIndex == this.maxLength && !obj.flag) {
+                       obj.zIndex = _zIndex;
+                   }
+                });
+                _newArr.map((item)=>{
+                    delete item.flag;
+                });
+                this.cardArrs = _newArr;
+            },
       onEnd () {
         that.drag = false
       },
