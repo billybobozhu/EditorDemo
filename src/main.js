@@ -6,9 +6,12 @@ import './styles/index.css'
 import plugins from './plugin/index'
 import { Button, Select, Dialog, Option, Switch, Tabs, TabPane, Message, MessageBox } from 'element-ui'
 import iconfont from './assets/iconfont/iconfont.js'
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import BootstrapVue from 'bootstrap-vue'
 
 Vue.use(plugins)
-
+Vue.use(BootstrapVue)
 Vue.use(Button)
 Vue.use(Select)
 Vue.use(Dialog)
