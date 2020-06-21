@@ -768,9 +768,9 @@
         //   }
         // }
         // // window.alert(k)
-        var all = JSON.stringify(that.data.component)
-        var blob1 = new Blob([all], {type: 'text/plain;charset=utf-8'})
-        FileSaver.saveAs(blob1, 'pageall.json')
+        // var all = JSON.stringify(that.data.component)
+        // var blob1 = new Blob([all], {type: 'text/plain;charset=utf-8'})
+        // FileSaver.saveAs(blob1, 'pageall.json')
         let n = document.getElementById('tagmanager').value
         let o = document.getElementById('titlearea').value
         let m = document.getElementById('intro').value
@@ -811,14 +811,14 @@
             condition: [{
               condition_id: 1,
               description: 'Condition1'
-            }],
-            line_condition: {
-              line_value: 1,
-              line_end_value: 5,
-              line_tag: '',
-              line_end_tag: ''
-            },
-            text_condition: ''
+            }]
+            // line_condition: {
+            //   line_value: 1,
+            //   line_end_value: 5,
+            //   line_tag: '',
+            //   line_end_tag: ''
+            // },
+            // text_condition: ''
           }
           i.content.push(li)
           return i
