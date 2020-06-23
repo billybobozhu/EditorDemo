@@ -1,97 +1,97 @@
 <style lang="scss">
-  .container {
-        width: 500px;
-        height: 300px;
-        padding: 20px;
-        border: 1px solid #ccc;
-        position: relative;
-    }
-    .card-item {
-        width: 700px;
-        height: 200px;
-        line-height: 198px;
-        text-align: center;
-        font-size: 18px;
-        border-radius: 5px;
-        position: absolute;
-    }
-    .card-item.t30 {
-        top: 30px;
-        animation: positionAnimate1 1.1s
-    }
-    .card-item.t60 {
-        top: 60px;
-        animation: positionAnimate1 0.9s
-    }
-    .card-item.t90 {
-        top: 90px;
-        animation: positionAnimate1 0.7s
-    }
-    .card-item.t120 {
-        top: 120px;
-        box-shadow: 0 0 2px 2px #fff;
-        animation: positionAnimate 0.5s
-    }
-    .card-item.t150 {
-        top: 150px;
-        box-shadow: 0 0 2px 2px #fff;
-        animation: positionAnimate 0.3s
-    }
-    @keyframes positionAnimate1 {
-        0% {
-            opacity: 0;
-            transform: scale(0.9);
-        }
-        100% {
-            transform: scale(1);
-            opacity: 1;
-        }
-    }
-    @keyframes positionAnimate {
-        0% {
-            opacity: 0;
-            transform: scale(1.1);
-        }
-        100% {
-            transform: scale(1);
-            opacity: 1;
-        }
-    }
-    .card-item.z1 {
-        z-index:  1;
-    }
-    .card-item.z2 {
-        z-index:  2;
-    }
-    .card-item.z3 {
-        z-index:  3;
-    }
-    .card-item.z4 {
-        z-index:  4;
-    }
-    .card-item.z5 {
-        z-index:  5;
-    }
-    .card-item.red {
-        border: 1px solid grey;
-        background-color: grey;
-    }
-    .card-item.blue {
-        border: 1px solid blue;
-        background-color: blue;
-    }
-    .card-item.yellow {
-        border: 1px solid brown;
-        background-color: brown;
-    }
-    .card-item.green {
-        border: 1px solid green;
-        background-color: green;
-    }
-    .card-item.black {
-        border: 1px solid pink;
-        background-color: pink;
-    }
+  // .container {
+  //       width: 500px;
+  //       height: 300px;
+  //       padding: 20px;
+  //       border: 1px solid #ccc;
+  //       position: relative;
+  //   }
+    // .card-item {
+    //     width: 700px;
+    //     height: 200px;
+    //     line-height: 198px;
+    //     text-align: center;
+    //     font-size: 18px;
+    //     border-radius: 5px;
+    //     position: absolute;
+    // }
+    // .card-item.t30 {
+    //     top: 30px;
+    //     animation: positionAnimate1 1.1s
+    // }
+    // .card-item.t60 {
+    //     top: 60px;
+    //     animation: positionAnimate1 0.9s
+    // }
+    // .card-item.t90 {
+    //     top: 90px;
+    //     animation: positionAnimate1 0.7s
+    // }
+    // .card-item.t120 {
+    //     top: 120px;
+    //     box-shadow: 0 0 2px 2px #fff;
+    //     animation: positionAnimate 0.5s
+    // }
+    // .card-item.t150 {
+    //     top: 150px;
+    //     box-shadow: 0 0 2px 2px #fff;
+    //     animation: positionAnimate 0.3s
+    // }
+    // @keyframes positionAnimate1 {
+    //     0% {
+    //         opacity: 0;
+    //         transform: scale(0.9);
+    //     }
+    //     100% {
+    //         transform: scale(1);
+    //         opacity: 1;
+    //     }
+    // }
+    // @keyframes positionAnimate {
+    //     0% {
+    //         opacity: 0;
+    //         transform: scale(1.1);
+    //     }
+    //     100% {
+    //         transform: scale(1);
+    //         opacity: 1;
+    //     }
+    // }
+    // .card-item.z1 {
+    //     z-index:  1;
+    // }
+    // .card-item.z2 {
+    //     z-index:  2;
+    // }
+    // .card-item.z3 {
+    //     z-index:  3;
+    // }
+    // .card-item.z4 {
+    //     z-index:  4;
+    // }
+    // .card-item.z5 {
+    //     z-index:  5;
+    // }
+    // .card-item.red {
+    //     border: 1px solid grey;
+    //     background-color: grey;
+    // }
+    // .card-item.blue {
+    //     border: 1px solid blue;
+    //     background-color: blue;
+    // }
+    // .card-item.yellow {
+    //     border: 1px solid brown;
+    //     background-color: brown;
+    // }
+    // .card-item.green {
+    //     border: 1px solid green;
+    //     background-color: green;
+    // }
+    // .card-item.black {
+    //     border: 1px solid pink;
+    //     background-color: pink;
+    // }
   .Sidebar {
 
     // position: relative;
@@ -130,26 +130,27 @@
     .nav-sm .fa-home {
         font-size: 32px !important;
     }
-    // .Sidebar {
 
-    // // position: relative;
-    // // width: 20%;
-    // // min-width: 400px;
-    // // margin: 20px auto;
-    // // @media (min-width: 520px) {
-    // //   width: 100%;
-    // // }
-    //  flex: 1;
-    //     flex-grow: 0;
-    //     align-self: flex-end;
-    //     display: inline-block;
-    //     background-color: #fff;
-    //     box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);
-    //     .sidebar-li {
-    //       cursor: pointer;
-    //       padding: 10px 12px;
-    //     }
-    // }
+    .Sidebar {
+    position: relative;
+    width: 20%;
+    height: 800px;
+    min-width: 40px;
+    margin: 20px auto;
+    @media (min-width: 520px) {
+      width: 20%;
+    }
+     flex: 1;
+        flex-grow: 0;
+        align-self: flex-end;
+        display: inline-block;
+        background-color: #fff;
+        box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);
+        .sidebar-li {
+          cursor: pointer;
+          padding: 10px 12px;
+        }
+    }
     .wrap {
       width: 780px;
       min-height: 100px;
@@ -475,7 +476,6 @@
   }
 </style>
 <template>
-
   <div class="form-create-wrap">
     <loading :loading="loading"></loading>
     <!-- <div class="container">
@@ -485,22 +485,20 @@
             {{item.text}}
         </div>
     </div> -->
-    <div class="Sidebar" v-if="data.component.length">
-      <div class="swiper-container">
+    <div class="Sidebar" >
+      <!-- <div class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide" v-for="(item,index) in images" :key="index">
             <img class="swiper-img" :src="item" />
           </div>
         </div>
-      </div>  
+      </div> -->
         <div class="sidebar-li" @click="addNodeFn">
           <i class="el-icon-plus"></i>
-          
-          <!-- <canvas id="mycanvas" width="10" height="10"></canvas> -->
         </div>
-        <div id="mountNode">
-        </div>  
-        <canvas id="mycanvas" width="300" height="1000"></canvas>
+        <div>
+          <svg class="d3-tree-vi width-100-percent" />
+        </div>
     </div>
 
     <div class="wrap" v-if="!loading">
@@ -517,7 +515,7 @@
               :name="item">
             </el-tab-pane>
           </el-tabs>
-          
+
           <div class="li" v-for="i in data.name" v-if="i.language === langCode[langList.indexOf(tabLang)]">
             <textarea class="title-area" id=titlearea placeholder="Title" v-model="i.componentnaire_name" @focus="$autoText($event)" @input="$autoText($event)"></textarea>
           </div>
@@ -535,18 +533,19 @@
         </div>
         <div class="q-wrap">
           <draggable v-for="data, index in data.component" :key="index" v-model="data.component" :options="{group:'people'}" :move="onMove" @start="drag=true" @end="onEnd">
-            <div class="container">
-           <div class="card-item" v-for="(item,index) in cardArrs"
+            <!-- <div class="container"> -->
+           <!-- <div class="card-item" v-for="(item,index) in cardArrs"
              :class="[item.bgColor ,'z'+item.zIndex, 't'+item.zIndex*30]"
              @click.stop="changeArrIndex(index)">
             {{item.text}}
-            </div>
-          </div>
+            </div> -->
+            <!-- </div> -->
             <div class="q-li" :class="{'q-li-focus': focusIndex === index}" id="items" @click="focusItem($event, index)">
               <div class="drap-area">
                 <i class="iconfont icon-tuozhuai"></i>
+
               </div>
-              
+
               <div class="q-item-wrap" v-for="content, index1 in data.content" v-if="content.language === langCode[langList.indexOf(tabLang)]">
                 <div class="q-item q-title-wrap">
                   <div class="q-title">
@@ -662,13 +661,13 @@
                   </ul>
                 </div>
               </div>
+              <!-- <div class="form-sidebar" v-if="data.component.length"> -->
+                <div class="sidebar-li" @click="addListFn(index)">
+                  <i class="el-icon-plus"></i>
+                </div>
+              <!-- </div> -->
             </div>
           </draggable>
-        </div>
-      </div>
-      <div class="form-sidebar" v-if="data.component.length">
-        <div class="sidebar-li" @click="addListFn">
-          <i class="el-icon-plus"></i>
         </div>
       </div>
     </div>
@@ -694,6 +693,7 @@
 </template>
 
 <script>
+  import * as d3 from 'd3'
   import draggable from 'vuedraggable'
   import loading from '@/components/loading.vue'
   // import {init,update} from '@/components/g6Utils.min.js'
@@ -735,6 +735,7 @@
                     }
                 ],
                 maxLength: 5,
+
         auth: false,
         loading: false,
         selectOptions: ['Situation', 'Story'],
@@ -758,7 +759,9 @@
           }],
           repeat_submit: false,
           component: [{
-            component_id: 1,
+            component_id: 0,
+            child: [],
+            parent: 0,
             types: 'Situation',
             is_required: false,
             content: [
@@ -795,18 +798,168 @@
 
         // },
         editable: true,
-        focusIndex: 0
+        focusIndex: 0,
+        tree_data:{
+          'name':0,
+          // 'children': that.data.component[0].child
+          // 'children':[{'name':20,'children':[{'name':30,'children':[]}]},{'name':50}]
+          'children':[]
+        }
       }
+    },
+    mounted () {
+      // let tree_data = {
+      //   'name':that.data.component[0].component_id,
+      //   // 'children': that.data.component[0].child
+      //   'children':[{'name':2,'children':[{'name':3,'children':[]}]}]
+      // }
+      // let clientWidth = document.body.clientWidth
+      // let clientHeight = document.body.clientHeight
+      // this.width = Math.floor(clientWidth * 0.16)
+      // this.height = clientHeight - 72
+      // console.log('width: ' + this.width + ' height: ' + this.height) // eslint-disable-line
+      // let margin = ({ top: 30, right: 200, bottom: 1000, left: 40 })
+      // let width = this.width
+      // let dy = width / 4
+      // let dx = 30
+      // let tree = d3.tree().nodeSize([dx, dy])
+      // let diagonal = d3.linkHorizontal().x(d => d.x).y(d => d.y)
+      // const root = d3.hierarchy(that.tree_data)
+      // root.x0 = 0
+      // root.y0 = 0
+      // root.descendants().forEach((d, i) => {
+      //   d.id = i
+      //   d._children = d.children
+      //   if (d.depth && d.data.name.length !== 4) d.children = null
+      // })
+      // let svg = d3
+      //   .select('svg.d3-tree-vi')
+      //   .attr('viewBox', [-margin.left, -margin.top, width, dx])
+      // const gLink = svg.append('g')
+      //   .attr('fill', 'none')
+      //   .attr('stroke', '#555')
+      //   .attr('stroke-opacity', 0.4)
+      //   .attr('stroke-width', 1.5)
+      // const gNode = svg.append('g')
+      //   .attr('cursor', 'pointer')
+      //   .attr('pointer-events', 'all')
+      // // ****************  zoom ************************
+      // // add zoom capabilities
+      // let zoomHandler = d3.zoom()
+      //   .on('zoom', zoomActions)
+      //   .scaleExtent([1 / 2, 8])
+      // svg.call(zoomHandler).on('dblclick.zoom', null)
+      // zoomHandler(svg)
+      // // Zoom functions
+      // function zoomActions () {
+      //   gNode.attr('transform', d3.event.transform)
+      //   gLink.attr('transform', d3.event.transform)
+      // }
+      // // ***********************************************
+      // function update (source) {
+      //   const duration = d3.event && d3.event.altKey ? 2500 : 250
+      //   const nodes = root.descendants().reverse()
+      //   const links = root.links()
+      //   // Compute the new tree layout.
+      //   tree(root)
+      //   // console.log('root ', root)
+      //   let left = root
+      //   let right = root
+      //   root.eachBefore(node => {
+      //     if (node.x < left.x) left = node
+      //     if (node.x > right.x) right = node
+      //   })
+      //   const height = right.x - left.x + margin.top + margin.bottom
+      //   const transition = svg.transition()
+      //     .duration(duration)
+      //     .attr('viewBox', [-margin.left, left.x - margin.top, width, height])
+      //     // .attr('viewBox', [-240, 0, 846, 10])
+      //     .tween('resize', window.ResizeObserver ? null : () => () => svg.dispatch('toggle'))
+      //   // Update the nodes…
+      //   const node = gNode.selectAll('g')
+      //     .data(nodes, d => d.id)
+      //   // Enter any new nodes at the parent's previous position.
+      //   const nodeEnter = node.enter().append('g')
+      //     .attr('transform', () => `translate(${source.y0},${source.x0})`)
+      //     .attr('fill-opacity', 0)
+      //     .attr('stroke-opacity', 0)
+      //     .on('click', d => {
+      //       d.children = d.children ? null : d._children
+      //       update(d)
+      //     })
+      //   nodeEnter.append('circle')
+      //   // .attr('class', 'node')
+      //   // .attr('r', 1e-6)
+      //   // .style('fill', function (d) {
+      //   //   return d._children ? '#c9e4ff' : '#fff'
+      //   // })
+      //     .attr('r', 10)
+      //     .attr('fill', d => d._children ? '#c9e4ff' : '#fff')
+      //     //  .style('fill', function (d) {
+      //     //           return d._children ? '#c9e4ff' : '#fff'
+      //     //         })
+      //     .attr('stroke-width', 2)
+      //     .attr('stroke', '#c9e4ff')
+      //   nodeEnter.append('text')
+      //     .attr('dy', '0.31em')
+      //     // .attr('x', d => d._children ? -6 : 6)
+      //     .attr('x', d => d._children ? -14 : 14)
+      //     .attr('text-anchor', d => d._children ? 'end' : 'start')
+      //     .text(d => d.data.name)
+      //     .clone(true).lower()
+      //     .attr('stroke-linejoin', 'round')
+      //     .attr('stroke-width', 3)
+      //     .attr('stroke', 'white')
+      //   // Transition nodes to their new position.
+      //   const nodeUpdate = node.merge(nodeEnter).transition(transition)
+      //     .attr('transform', d => `translate(${d.x},${d.y})`)
+      //     // .attr('r', 10)
+      //     // .style('fill', function (d) {
+      //     //   return d._children ? '#c9e4ff' : '#fff'
+      //     // })
+      //     // .attr('cursor', 'pointer')
+      //     .attr('fill-opacity', 1)
+      //     .attr('stroke-opacity', 1)
+      //   console.log(nodeUpdate) // eslint-disable-line
+      //   // Transition exiting nodes to the parent's new position.
+      //   const nodeExit = node.exit().transition(transition).remove()
+      //     .attr('transform', () => `translate(${source.y},${source.x})`)
+      //     .attr('fill-opacity', 0)
+      //     .attr('stroke-opacity', 0)
+      //   console.log(nodeExit) // eslint-disable-line
+      //   // Update the links…
+      //   const link = gLink.selectAll('path')
+      //     .data(links, d => d.target.id)
+      //   // Enter any new links at the parent's previous position.
+      //   const linkEnter = link.enter().append('path')
+      //     .attr('d', () => {
+      //       const o = { x: source.x0, y: source.y0 }
+      //       return diagonal({ source: o, target: o })
+      //     })
+      //   // Transition links to their new position.
+      //   link.merge(linkEnter).transition(transition)
+      //     .attr('d', diagonal)
+      //   // Transition exiting nodes to the parent's new position.
+      //   link.exit().transition(transition).remove()
+      //     .attr('d', () => {
+      //       const o = { x: source.x, y: source.y }
+      //       return diagonal({ source: o, target: o })
+      //     })
+      //   // Stash the old positions for transition.
+      //   root.eachBefore(d => {
+      //     d.x0 = d.x
+      //     d.y0 = d.y
+      //   })
+      // }
+      // update(root)
+      this.drawGraph()
     },
     components: {
       draggable,
       loading
     },
     methods: {
-       changeArrIndex(index){
-//                if(index == this.maxLength - 1) {
-//                    return;
-//                }
+      changeArrIndex(index){
                 let _zIndex = "";
                 let _newArr = [];
                 this.cardArrs.forEach((item,idx)=> {
@@ -876,6 +1029,7 @@
         var blob = new Blob([content], {type: 'text/plain;charset=utf-8'})
         FileSaver.saveAs(blob, 'save.json')
       },
+
       addListFn (index) {
         let codeList = that.editableTabs.map((i) => {
           return that.langCode[that.langList.indexOf(i)]
@@ -891,13 +1045,57 @@
           }
         })
         let list = {
-          component_id: that.data.component.length + 1,
+          component_id: that.data.component.length ,
+          child:[],
+          parent:index,
           types: 'Situation',
           is_required: false,
           content: contentList
         }
         that.data.component.push(list)
+        that.data.component[index].child.push({'name':list.component_id,'children':[]})
+        //that.tree_data.children=that.data.component[0].child
+        //alert(that.data.component[index].child)
         that.focusIndex = that.data.component.length - 1
+
+        var start = Number(index)
+        var trace = Number(index)
+        if(trace==0){
+          that.tree_data.children.push({'name':list.component_id,'children':[]})
+          //alert(that.tree_data.children)
+        }else{
+          var parent_list = [start]
+          while (that.data.component[trace].parent> 0){
+            //alert("parent"+that.data.component[trace-1].parent)
+            trace=that.data.component[index].parent
+            parent_list.push(trace)
+          }
+          //alert(Number(parent_list[parent_list.length-1]))
+          var dad=0
+          for(var m=1;m<that.tree_data.children.length;m++){
+            if(that.tree_data.children[m].name==parent_list[parent_list.length-1]){
+              dad = m
+            }
+          }
+          //alert(dad)
+          var par = that.tree_data.children[dad]
+          for (var i=parent_list.length-1;i>0;i--){
+            for(var k=0;k<par.children.length;k++){
+              if (par.children[k].name==parent_list[i]){
+                alert('found')
+                dad = k
+                par = par.children[dad]
+                break
+              }
+            }
+          }
+          //alert(par.name)
+          par.children.push({'name':list.component_id,'children':list.child})
+        }
+        d3.selectAll("svg > *").remove()
+        this.drawGraph()
+
+        // if (index in that.tree_data)
         // this.saveFn(list.component_id)
       },
       addNodeFn () {
@@ -922,13 +1120,160 @@
           }
         })
         let list = {
-          component_id: that.data.component.length + 1,
+          component_id: that.data.component.length ,
+          child:[],
+          parent:0,
           types: 'Situation',
           is_required: false,
           content: contentList
         }
         that.data.component.push(list)
+        that.data.component[0].child.push({'name':list.component_id,'children':list.child})
         that.focusIndex = that.data.component.length - 1
+        that.tree_data.children = that.data.component[0].child
+        d3.selectAll("svg > *").remove()
+        that.drawGraph()
+      },
+      drawGraph(){
+        let clientWidth = document.body.clientWidth
+        let clientHeight = document.body.clientHeight
+        this.width = Math.floor(clientWidth * 0.16)
+        this.height = clientHeight - 72
+        console.log('width: ' + this.width + ' height: ' + this.height) // eslint-disable-line
+        let margin = ({ top: 30, right: 200, bottom: 1000, left: 40 })
+        let width = this.width
+        let dy = width / 4
+        let dx = 30
+        let tree = d3.tree().nodeSize([dx, dy])
+        let diagonal = d3.linkHorizontal().x(d => d.x).y(d => d.y)
+        const root = d3.hierarchy(that.tree_data)
+        root.x0 = 0
+        root.y0 = 0
+        root.descendants().forEach((d, i) => {
+          d.id = i
+          d._children = d.children
+          if (d.depth && d.data.name.length !== 4) d.children = null
+        })
+        let svg = d3
+          .select('svg.d3-tree-vi')
+          .attr('viewBox', [-margin.left, -margin.top, width, dx])
+        const gLink = svg.append('g')
+          .attr('fill', 'none')
+          .attr('stroke', '#555')
+          .attr('stroke-opacity', 0.4)
+          .attr('stroke-width', 1.5)
+        const gNode = svg.append('g')
+          .attr('cursor', 'pointer')
+          .attr('pointer-events', 'all')
+        // ****************  zoom ************************
+        // add zoom capabilities
+        let zoomHandler = d3.zoom()
+          .on('zoom', zoomActions)
+          .scaleExtent([1 / 2, 8])
+        svg.call(zoomHandler).on('dblclick.zoom', null)
+        zoomHandler(svg)
+        // Zoom functions
+        function zoomActions () {
+          gNode.attr('transform', d3.event.transform)
+          gLink.attr('transform', d3.event.transform)
+        }
+        // ***********************************************
+        function update (source) {
+          const duration = d3.event && d3.event.altKey ? 2500 : 250
+          const nodes = root.descendants().reverse()
+          const links = root.links()
+          // Compute the new tree layout.
+          tree(root)
+          // console.log('root ', root)
+          let left = root
+          let right = root
+          root.eachBefore(node => {
+            if (node.x < left.x) left = node
+            if (node.x > right.x) right = node
+          })
+          const height = right.x - left.x + margin.top + margin.bottom
+          const transition = svg.transition()
+            .duration(duration)
+            .attr('viewBox', [-margin.left, left.x - margin.top, width, height])
+            // .attr('viewBox', [-240, 0, 846, 10])
+            .tween('resize', window.ResizeObserver ? null : () => () => svg.dispatch('toggle'))
+          // Update the nodes…
+          const node = gNode.selectAll('g')
+            .data(nodes, d => d.id)
+          // Enter any new nodes at the parent's previous position.
+          const nodeEnter = node.enter().append('g')
+            .attr('transform', () => `translate(${source.y0},${source.x0})`)
+            .attr('fill-opacity', 0)
+            .attr('stroke-opacity', 0)
+            .on('click', d => {
+              d.children = d.children ? null : d._children
+              update(d)
+            })
+          nodeEnter.append('circle')
+          // .attr('class', 'node')
+          // .attr('r', 1e-6)
+          // .style('fill', function (d) {
+          //   return d._children ? '#c9e4ff' : '#fff'
+          // })
+            .attr('r', 10)
+            .attr('fill', d => d._children ? '#c9e4ff' : '#fff')
+            //  .style('fill', function (d) {
+            //           return d._children ? '#c9e4ff' : '#fff'
+            //         })
+            .attr('stroke-width', 2)
+            .attr('stroke', '#c9e4ff')
+          nodeEnter.append('text')
+            .attr('dy', '0.31em')
+            // .attr('x', d => d._children ? -6 : 6)
+            .attr('x', d => d._children ? -14 : 14)
+            .attr('text-anchor', d => d._children ? 'end' : 'start')
+            .text(d => d.data.name)
+            .clone(true).lower()
+            .attr('stroke-linejoin', 'round')
+            .attr('stroke-width', 3)
+            .attr('stroke', 'white')
+          // Transition nodes to their new position.
+          const nodeUpdate = node.merge(nodeEnter).transition(transition)
+            .attr('transform', d => `translate(${d.x},${d.y})`)
+            // .attr('r', 10)
+            // .style('fill', function (d) {
+            //   return d._children ? '#c9e4ff' : '#fff'
+            // })
+            // .attr('cursor', 'pointer')
+            .attr('fill-opacity', 1)
+            .attr('stroke-opacity', 1)
+          console.log(nodeUpdate) // eslint-disable-line
+          // Transition exiting nodes to the parent's new position.
+          const nodeExit = node.exit().transition(transition).remove()
+            .attr('transform', () => `translate(${source.y},${source.x})`)
+            .attr('fill-opacity', 0)
+            .attr('stroke-opacity', 0)
+          console.log(nodeExit) // eslint-disable-line
+          // Update the links…
+          const link = gLink.selectAll('path')
+            .data(links, d => d.target.id)
+          // Enter any new links at the parent's previous position.
+          const linkEnter = link.enter().append('path')
+            .attr('d', () => {
+              const o = { x: source.x0, y: source.y0 }
+              return diagonal({ source: o, target: o })
+            })
+          // Transition links to their new position.
+          link.merge(linkEnter).transition(transition)
+            .attr('d', diagonal)
+          // Transition exiting nodes to the parent's new position.
+          link.exit().transition(transition).remove()
+            .attr('d', () => {
+              const o = { x: source.x, y: source.y }
+              return diagonal({ source: o, target: o })
+            })
+          // Stash the old positions for transition.
+          root.eachBefore(d => {
+            d.x0 = d.x
+            d.y0 = d.y
+          })
+        }
+        update(root)
       },
       deleteListFn (i) {
         that.data.component.splice(i, 1)
@@ -1047,6 +1392,12 @@
           })
         }
       }
-    }
+    },
+    // watch: {
+    //   dataa() {
+    //     console.log('this', that.tree_data);
+    //     that.drawGraph
+    //   }
+    // }
   }
 </script>
